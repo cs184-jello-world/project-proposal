@@ -99,18 +99,113 @@
     <!-- Content -->
     <div class="container mt-5">
       <div class="page">
-  <h1 class="page-title">proposal</h1>
-  <p>Team Members: Noah Adhikari, Jedi Tsang, Johnny Lu, Allen Gu</p>
+  <h1 id="jello-world">Jello, World!</h1>
+
+<p>Team Members: Noah Adhikari, Jedi Tsang, Johnny Lu, Allen Gu</p>
 
 <h3 id="summary">Summary</h3>
 
+<p>We hope to replicate jello through softbody simulation and track its interaction
+with light during collisions and deformations. If time permits, we would also
+like to include more interesting rigid-body collisions such as blades or
+bullets.</p>
+
 <h3 id="problem-description">Problem Description</h3>
+
+<p>In this project, we strive to create an accurate and realistic simulation of
+jello, a task that comes with many challenges in rendering and physical
+simulation.</p>
+
+<p><strong>Why it’s important:</strong> Simulating jello-like substances extends to many
+different materials that combine both non-rigid and rigid bodies. With our
+approach, we would expand the capabilities of our simulation and possibly be
+able to model many other materials as well.</p>
+
+<p><strong>Challenges:</strong></p>
+<ol>
+  <li>Rendering a translucent object to look like jello</li>
+  <li>Implementing a technique to simulate jello</li>
+  <li>Handling interactions and collisions with other rigid objects (or even
+fluids)</li>
+  <li>To fully simulate jello, we’d want to be capable of modeling how it breaks
+apart under high stress</li>
+</ol>
+
+<p><strong>Ideas:</strong> For rendering, we might extend our ray tracer from Project 3 or look into more optimized renderers. For simulation, we are looking into <a href="https://en.wikipedia.org/wiki/Material_point_method" rel="external nofollow noopener" target="_blank">material point methods (MPMs)</a> and how to simulate multi-phase materials. Another approach might be to extend our mass-spring mesh models, though this wouldn’t be able to simulate jello breaking.</p>
 
 <h3 id="goals-and-deliverables">Goals and Deliverables</h3>
 
+<p>Main Deliverable: Our goal is to develop a jello simulation to produce videos of
+jello-like substances interacting with each other and rigid objects. The
+substances should realistically bounce and deform, and we also intend to support
+translucent jello so the shading and refraction of light through the jello
+should be realistic as well. We will test with different degrees of damping
+which will affect how rigid or stiff the jello is.</p>
+
+<p>This should be achievable since it will involve many concepts we’ve learning in
+class like spring systems, external forces and motion simulation, as well as
+light refraction and other ray tracing concepts.</p>
+
+<p>Intended goals:</p>
+<ol>
+  <li>(baseline) Opaque jello dropped onto rigid floor</li>
+  <li>(expected) Translucency</li>
+  <li>(expected) Interactions with other bodies (soft and/or rigid)</li>
+  <li>(stretch) Simulating more interesting interactions (e.g. knives, needles, or
+bullets)</li>
+  <li>(stretch) Optimizing simulation for faster rendering</li>
+</ol>
+
+<p>A minimum for success is the baseline goal of a simulation of an opaque softbody
+jello-like object dropped onto a rigid floor, with realistic bouncing and
+deformation. Goals 2 and 3 are what we plan to achieve, making the simulation
+more realistic by including translucent jello and collisions with non-floor
+objects. If we are running ahead of schedule, our stretch goals are to simulate
+more interesting physical interactions and improve the performance of our
+simulations.</p>
+
+<p>Quantifiable metrics are difficult to define for this project, but we have at
+least one: seconds per frame for a given render. Quality will mostly be
+judged by the realism of the simulation.</p>
+
 <h3 id="schedule">Schedule</h3>
 
+<p>Week one:</p>
+<ul>
+  <li>Basic rendering code with no physics</li>
+</ul>
+
+<p>Week two:</p>
+<ul>
+  <li>Develop jello model</li>
+  <li>Add physics simulation i.e. gravity</li>
+  <li>Milestone deliverables</li>
+</ul>
+
+<p>Week three:</p>
+<ul>
+  <li>Deformations</li>
+  <li>Refraction</li>
+</ul>
+
+<p>Week four:</p>
+<ul>
+  <li>Stretch goals</li>
+</ul>
+
 <h3 id="resources">Resources</h3>
+
+<ul>
+  <li><a href="https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S10/final_projects/wellington_boeckel.pdf" rel="external nofollow noopener" target="_blank">Paper describing point mass spring system to represent jello structure</a></li>
+  <li>Material Point Methods
+    <ul>
+      <li>
+<a href="https://yuanming.taichi.graphics/publication/2018-mlsmpm/mls-mpm-cpic.pdf" rel="external nofollow noopener" target="_blank">A Moving Least Squares Material Point Method with Displacement Discontinuity and Two-Way Rigid Body Coupling</a> - (<a href="https://www.youtube.com/watch?v=9M18rc9-VWU" rel="external nofollow noopener" target="_blank">video</a>)</li>
+      <li>
+<a href="https://www.math.ucla.edu/~jteran/papers/HGGWJT19.pdf" rel="external nofollow noopener" target="_blank">A Hybrid Material Point Method for Frictional Contact with Diverse Materials</a> - (<a href="https://www.youtube.com/watch?v=54YvCE8_7lM" rel="external nofollow noopener" target="_blank">video</a>)</li>
+    </ul>
+  </li>
+</ul>
 
 </div>
 
