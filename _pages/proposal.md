@@ -74,10 +74,12 @@ judged by the realism of the simulation.
 
 Week one:
 * Basic rendering code with no physics
+  * Opaque raytracing
 
 Week two:
 * Develop jello model
 * Add physics simulation i.e. gravity
+* Collison detection
 * Milestone deliverables
 
 Week three:
