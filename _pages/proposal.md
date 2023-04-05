@@ -8,6 +8,8 @@ permalink: /
 
 Team Members: Noah Adhikari, Jedi Tsang, Johnny Lu, Allen Gu
 
+![jello-jiggle](https://media.tenor.com/hiF1rq8rc2AAAAAd/gelatin-wiggle.gif){:style="display:block; margin-left: auto; margin-right: auto; width:50%;"}
+
 ### Summary
 
 We hope to replicate jello through softbody simulation and track its interaction
@@ -36,8 +38,9 @@ able to model many other materials as well.
 
 **Ideas:** For rendering, we might extend our ray tracer from Project 3 or look into more optimized renderers. For simulation, we are looking into [material point methods (MPMs)](https://en.wikipedia.org/wiki/Material_point_method) and how to simulate multi-phase materials. Another approach might be to extend our mass-spring mesh models, though this wouldn't be able to simulate jello breaking. 
 
-
 ### Goals and Deliverables
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4n5AfHYST6E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Main Deliverable: Our goal is to develop a jello simulation to produce videos of
 jello-like substances interacting with each other and rigid objects. The
@@ -91,6 +94,7 @@ Week four:
 
 ### Resources
 
+- [Jello cube animation case study](https://www.cs.cmu.edu/~barbic/jellocube_bw.pdf)
 - [Paper describing point mass spring system to represent jello structure](https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S10/final_projects/wellington_boeckel.pdf)
 - Material Point Methods
     - [A Moving Least Squares Material Point Method with Displacement Discontinuity and Two-Way Rigid Body Coupling](https://yuanming.taichi.graphics/publication/2018-mlsmpm/mls-mpm-cpic.pdf) - ([video](https://www.youtube.com/watch?v=9M18rc9-VWU))
