@@ -3,13 +3,16 @@ layout: page
 title: milestone
 permalink: /milestone
 ---
-Link to [slides](https://docs.google.com/presentation/d/1J-ZRsWEHi880mus2ToZowTbxCG3dsnSCWVheXV5ZAUs/edit?usp=sharing)
-
-Link to [recording](https://drive.google.com/file/d/104xV2tybstKLTo3hFu2rhBp1-Qv0Zhwe/view?usp=sharing)
 
 # Milestone
 
 Jello, again!
+
+#Important Links
+
+Link to [slides](https://docs.google.com/presentation/d/1J-ZRsWEHi880mus2ToZowTbxCG3dsnSCWVheXV5ZAUs/edit?usp=sharing)
+
+Link to [recording](https://drive.google.com/file/d/104xV2tybstKLTo3hFu2rhBp1-Qv0Zhwe/view?usp=sharing)
 
 ## Accomplishments
 
