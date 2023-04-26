@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://cs184-jello-world.github.io//project-proposal/sitemap.xml
+Sitemap: https://cs184-jello-world.github.io///sitemap.xml

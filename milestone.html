@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CS 184 Final Project</title>
+    <title>milestone | CS 184 Final Project</title>
     <meta name="author" content="  ">
     <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
@@ -34,7 +34,7 @@
     <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
     
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="https://cs184-jello-world.github.io//">
+    <link rel="canonical" href="https://cs184-jello-world.github.io//milestone">
     
     <!-- Dark Mode -->
     
@@ -55,7 +55,7 @@
       <!-- Nav Bar -->
       <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
         <div class="container">
-          
+          <a class="navbar-brand title font-weight-lighter" href="//">CS 184 Final Project</a>
           <!-- Navbar Toggle -->
           <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -67,12 +67,12 @@
           <div class="collapse navbar-collapse text-right" id="navbarNav">
             <ul class="navbar-nav ml-auto flex-nowrap">
 
-              <li class="nav-item active">
-                <a class="nav-link" href="/">proposal<span class="sr-only">(current)</span></a>
+              <li class="nav-item ">
+                <a class="nav-link" href="/">proposal</a>
               </li>
 
-              <li class="nav-item active">
-                <a class="nav-link" href="/milestone">milestone<span class="sr-only">(current)</span></a>
+              <li class="nav-item ">
+                <a class="nav-link" href="/milestone">milestone</a>
               </li>
 
               <!-- Toogle theme mode -->
@@ -99,123 +99,43 @@
     <!-- Content -->
     <div class="container mt-5">
       <div class="page">
-  <h1 id="jello-world">Jello, World!</h1>
+  <h1 id="milestone">Milestone</h1>
 
-<p>Team Members: Noah Adhikari, Jedi Tsang, Johnny Lu, Allen Gu</p>
+<p>Jello, again!</p>
 
-<p><img src="https://media.tenor.com/hiF1rq8rc2AAAAAd/gelatin-wiggle.gif" alt="jello-jiggle" style="display:block; margin-left: auto; margin-right: auto; width:50%;"></p>
+<h2 id="accomplishments">Accomplishments</h2>
 
-<h3 id="summary">Summary</h3>
+<p>For our project, we chose to learn Unity due to its popularity, capabilities in physical 
+simulation and rendering, and potential need for efficiency.</p>
 
-<p>We hope to replicate jello through softbody simulation and track its interaction
-with light during collisions and deformations. If time permits, we would also
-like to include more interesting rigid-body collisions such as blades or
-bullets.</p>
+<p>So far, we’ve implemented a Jello simulation using a mass-spring model. The 
+model creates a 3D grid with masses at each vertex and springs connecting
+the masses. We chose the springs (structural, bending, and shearing) by extrapolating 
+the structure of our cloth simulation. Afterwards, we implemented the mesh generation 
+for this model, which creates a triangle mesh from the masses’ vertices.</p>
 
-<h3 id="problem-description">Problem Description</h3>
+<p><img src="../assets/img/milestone/springs.jpeg" alt="springs" style="display:block; margin-left: auto; margin-right: auto; width:30%;"></p>
 
-<p>In this project, we strive to create an accurate and realistic simulation of
-jello, a task that comes with many challenges in rendering and physical
-simulation.</p>
+<p>Then, we worked with Unity to take our mesh and render it to look like Jello. This took 
+some experimenting with the Unity materials and rendering pipelines.</p>
 
-<p><strong>Why it’s important:</strong> Simulating jello-like substances extends to many
-different materials that combine both non-rigid and rigid bodies. With our
-approach, we would expand the capabilities of our simulation and possibly be
-able to model many other materials as well.</p>
+<h2 id="preliminary-results">Preliminary Results</h2>
+<p>Here’s the current state of our simulation and rendering! We added in a listener for 
+keypresses which makes the Jello jump upwards.</p>
 
-<p><strong>Challenges:</strong></p>
-<ol>
-  <li>Rendering a translucent object to look like jello</li>
-  <li>Implementing a technique to simulate jello</li>
-  <li>Handling interactions and collisions with other rigid objects (or even
-fluids)</li>
-  <li>To fully simulate jello, we’d want to be capable of modeling how it breaks
-apart under high stress</li>
-</ol>
+<p><img src="../assets/img/milestone/jello.gif" alt="jello" style="display:block; margin-left: auto; margin-right: auto; width:50%;"></p>
 
-<p><strong>Ideas:</strong> For rendering, we might extend our ray tracer from Project 3 or look into more optimized renderers. For simulation, we are looking into <a href="https://en.wikipedia.org/wiki/Material_point_method" rel="external nofollow noopener" target="_blank">material point methods (MPMs)</a> and how to simulate multi-phase materials. Another approach might be to extend our mass-spring mesh models, though this wouldn’t be able to simulate jello breaking.</p>
-
-<h3 id="goals-and-deliverables">Goals and Deliverables</h3>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4n5AfHYST6E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
-
-<p>Main Deliverable: Our goal is to develop a jello simulation to produce videos of
-jello-like substances interacting with each other and rigid objects. The
-substances should realistically bounce and deform, and we also intend to support
-translucent jello so the shading and refraction of light through the jello
-should be realistic as well. We will test with different degrees of damping
-which will affect how rigid or stiff the jello is.</p>
-
-<p>This should be achievable since it will involve many concepts we’ve learning in
-class like spring systems, external forces and motion simulation, as well as
-light refraction and other ray tracing concepts.</p>
-
-<p>Intended goals:</p>
-<ol>
-  <li>(baseline) Opaque jello dropped onto rigid floor</li>
-  <li>(expected) Translucency</li>
-  <li>(expected) Interactions with other bodies (soft and/or rigid)</li>
-  <li>(stretch) Simulating more interesting interactions (e.g. knives, needles, or
-bullets)</li>
-  <li>(stretch) Optimizing simulation for faster rendering</li>
-</ol>
-
-<p>A minimum for success is the baseline goal of a simulation of an opaque softbody
-jello-like object dropped onto a rigid floor, with realistic bouncing and
-deformation. Goals 2 and 3 are what we plan to achieve, making the simulation
-more realistic by including translucent jello and collisions with non-floor
-objects. If we are running ahead of schedule, our stretch goals are to simulate
-more interesting physical interactions and improve the performance of our
-simulations.</p>
-
-<p>Quantifiable metrics are difficult to define for this project, but we have at
-least one: seconds per frame for a given render. Quality will mostly be
-judged by the realism of the simulation.</p>
-
-<h3 id="schedule">Schedule</h3>
-
-<p>Week one:</p>
+<h2 id="reflection">Reflection</h2>
+<p>Overall, we thought that our model works well, but there’s a couple of issues with the model and our rendering that we’d
+want to improve on for our final submission.</p>
 <ul>
-  <li>Basic rendering code with no physics
-    <ul>
-      <li>Opaque raytracing</li>
-    </ul>
-  </li>
+  <li>The mass-spring model can be unstable at times, especially when high forces are exerted</li>
+  <li>Our render isn’t as transparent and realistic as we’d like</li>
 </ul>
 
-<p>Week two:</p>
-<ul>
-  <li>Develop jello model</li>
-  <li>Add physics simulation i.e. gravity</li>
-  <li>Collison detection</li>
-  <li>Milestone deliverables</li>
-</ul>
-
-<p>Week three:</p>
-<ul>
-  <li>Deformations</li>
-  <li>Refraction</li>
-</ul>
-
-<p>Week four:</p>
-<ul>
-  <li>Stretch goals</li>
-</ul>
-
-<h3 id="resources">Resources</h3>
-
-<ul>
-  <li><a href="https://www.cs.cmu.edu/~barbic/jellocube_bw.pdf" rel="external nofollow noopener" target="_blank">Jello cube animation case study</a></li>
-  <li><a href="https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S10/final_projects/wellington_boeckel.pdf" rel="external nofollow noopener" target="_blank">Paper describing point mass spring system to represent jello structure</a></li>
-  <li>Material Point Methods
-    <ul>
-      <li>
-<a href="https://yuanming.taichi.graphics/publication/2018-mlsmpm/mls-mpm-cpic.pdf" rel="external nofollow noopener" target="_blank">A Moving Least Squares Material Point Method with Displacement Discontinuity and Two-Way Rigid Body Coupling</a> - (<a href="https://www.youtube.com/watch?v=9M18rc9-VWU" rel="external nofollow noopener" target="_blank">video</a>)</li>
-      <li>
-<a href="https://www.math.ucla.edu/~jteran/papers/HGGWJT19.pdf" rel="external nofollow noopener" target="_blank">A Hybrid Material Point Method for Frictional Contact with Diverse Materials</a> - (<a href="https://www.youtube.com/watch?v=54YvCE8_7lM" rel="external nofollow noopener" target="_blank">video</a>)</li>
-    </ul>
-  </li>
-</ul>
+<p>Also, our goal is to eventually try using a material point method or other more complicated method to render the
+Jello and support collisions with rigid bodies. For example, we want to simulate a bullet striking through
+the Jello cube.</p>
 
 </div>
 
