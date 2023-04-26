@@ -38,4 +38,10 @@ want to improve on for our final submission.
 
 Also, our goal is to eventually try using a material point method or other more complicated method to render the
 Jello and support collisions with rigid bodies. For example, we want to simulate a bullet striking through
-the Jello cube. 
+the Jello cube.
+
+## Next Steps
+Thoughts on next steps: [google docs](https://docs.google.com/document/d/1xE-Ep-xVdubuVbMepf2hA_PNwt-nN5Sp_7KV31qTvK4/edit?usp=sharing)
+
+Link to [slides](https://docs.google.com/presentation/d/1J-ZRsWEHi880mus2ToZowTbxCG3dsnSCWVheXV5ZAUs/edit?usp=sharing)
+Link to [recording](https://drive.google.com/file/d/104xV2tybstKLTo3hFu2rhBp1-Qv0Zhwe/view?usp=sharing)
