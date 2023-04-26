@@ -8,7 +8,7 @@ permalink: /milestone
 
 Jello, again!
 
-#Important Links
+## Important Links
 
 Link to [slides](https://docs.google.com/presentation/d/1J-ZRsWEHi880mus2ToZowTbxCG3dsnSCWVheXV5ZAUs/edit?usp=sharing)
 
