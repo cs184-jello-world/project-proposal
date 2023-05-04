@@ -37,6 +37,12 @@ We had to experiment a bit to see what springs were necessary to constrain our s
 
 For both the cube and the sphere mesh, we used Unity's built-in triangle Meshes based on an indexed triangle representation. For every vertex on the outer surface of the body, we track the position in a vertex list. Then, we describe triangles as triplets of indices within the vertex list $$(i_{v1}, i_{v2}, i_{v3})$$. A tricky aspect of creating the mesh was being intentional about making sure that all the triangles were in a consistent winding order so that the normals were pointed outwards.
 
+**Handling Collisions**
+
+Collisions between rigid bodies and our jellies were handled by Unity’s physics engine, primarily relying on the outer vertices of our mesh representations. We needed to update the center of the models to correspond to the average of the vertices for Unity’s collision detection to work properly.
+
+Collisions between jellies and themselves were much more difficult. We ran into problems with non-vertex points in the mesh falling through each other when colliding. As a workaround, we made the springs collide with one another so that the meshes were full convex shapes in three dimensions and could no longer fall through each other. Because our models were based heavily on springs, the collisions were rather bouncy, but we still found they looked quite realistic.
+
 **Interactivity**
 
 We implemented two types of interactivity: (1) movement with WASD and space and (2) click-and-drag to manipulate vertices.
@@ -53,6 +59,20 @@ As this was all of our first times working with Unity, we ran into a number of c
 We concluded that the structure of our objects was maintained via the particle collisions, and kept the particle sizes large enough but didn’t render the particles themselves. We’re still not completely sure whether the deformations were caused by precision errors when calculating the normals or the mass of the particle decreasing as the size of the particle also decreases, which would cause spring correction forces to apply an outsized impact on the particles.
 3. **Choosing the sphere model's spring configuration:** During many early iterations of our design, we found that many spring configurations were underconstrained, resulting in erratic motion and deformation. As a result, we added an origin point with springs connecting to all outer vertices as well as other sets of springs that connect polar opposite vertices. Additionally, we found that lowering the spring constant to the 100-5000 range led to the best results.
 4. **Resting Jello does not stabilize:** Even when resting in place, our Jello would still continue to move. Introducing damping and friction on each vertex so the object would eventually come to rest.
+5. **Collision detection:** When attempting to implement collisions, we found that the objects would only detect a collision when particles collided. However, since the mesh spans more locations than simply the particle positions, this would lead to objects being “inside” of one another before a collision was detected. To fix this, we modified the position of the Game Object in Unity to match the center of the mesh so that collisions were detected properly. Additionally, we enabled collisions between springs so that objects could no longer fall through one another.
+6. **Jagged edges in spherical Jello**: The spherical object appeared jagged when the change in phi or theta was too large. Since the triangular mesh draws triangles between adjacent points in the mesh, it would appear non-spherical when these values were large. Decreasing the step size was the solution, and we didn’t sacrifice too much on computational efficiency since, unlike our cubic jello that was dense and filled with particles, we only had one origin particle inside of the sphere.
+
+| Jello with Δɸ = π / 3, Δϴ = π / 6 | Jello with Δɸ = π / 10, Δϴ = π / 20|
+| --- | --- |
+| ![Low Res Jello](../assets/img/writeup/Low Res Jello.gif){:style="display:block; margin-right: auto; width:90%;"} | ![High Res Jello](../assets/img/writeup/High Res Jello.gif){:style="display:block; margin-right: auto; width:90%;"} |
+
+## Lessons Learned
+
+We learned a lot in this project! Here are a few:
+
+1. We broke apart our models into its components to make our code cleaner and simpler.
+2. Choosing the right parameters (e.g. damping, particle size, number of particles, spring constant) is really important for realistic simulations.
+3. To debug, we wrote helper methods to visualize specific aspects of our Jello (e.g. just the wireframe). This also came in handy when rendering images for the final writeup.
 
 ## Final Results
 
@@ -66,6 +86,14 @@ In the videos below, we capture the primary features of our Jello! You can see t
 We also played around with the spring constant to manipulate the rigidity of the Jello. As you can see, lower spring constants make the Jello more jiggly, analogous to an extra bouncy bit of jello! Naturally, a higher spring constant meant that the system would settle quicker. Interestingly, the bounce height for the cube seemed to increase then decrease as the spring constant increased. This might be because lower spring constants could not apply enough force to lift the Jello while higher spring constants do not deform enough to spring the Jello upwards.
 
 ![spring-constants](../assets/img/writeup/spring-constants.gif){:style="display:block; margin-left: auto; margin-right: auto; width:90%;"}
+
+We also handled collisions between two Jello objects by using mesh colliders and spring collision.
+
+![collision](../assets/img/writeup/collision.gif){:style="display:block; margin-left: auto; margin-right: auto; width:90%;"}
+
+Lastly, we supported clicking and dragging our Jello object as an aspect of interactivity.
+
+![drag](../assets/img/writeup/drag.gif){:style="display:block; margin-left: auto; margin-right: auto; width:90%;"}
 
 ## References
 From a high level, other than referencing documentation on how certain built in tools for Unity worked, we used trial and error when building
