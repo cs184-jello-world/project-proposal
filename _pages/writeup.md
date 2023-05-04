@@ -7,7 +7,7 @@ mathjax: true
 
 # Final Writeup
 
-[Slides](https://docs.google.com/presentation/d/1ozbsNFH_Sg-njZ_wx_bAXcgFaxxcuOdkhU3FMj_iLkg/edit?usp=sharing) | [Video](https://www.youtube.com/watch?v=qnUuMLBezdM)
+[Slides ](https://docs.google.com/presentation/d/1ozbsNFH_Sg-njZ_wx_bAXcgFaxxcuOdkhU3FMj_iLkg/edit?usp=sharing) | [Video](https://www.youtube.com/watch?v=qnUuMLBezdM)
 
 Jello, world! In our final project, we implemented a realtime Jello simulation in Unity with support for keyboard and mouse interactivity that allows the user to manipulate the Jello. We created two mass-spring systems in the forms of a cube and a sphere and wrote mesh generators for both shapes. Initially, we started with the cube model by extending the 2D cloth model from Project 4 to our 3D lattice of masses and springs. Then, we devised our own algorithm for the sphere model using spherical coordinates and testing different spring configurations. Finally, we tuned spring parameters for realistic renderings. Since we used Unity for our project, we took advantage of the High Definition Rendering Pipeline, allowing us to focus on the construction of the object itself.
 
@@ -66,6 +66,7 @@ We concluded that the structure of our objects was maintained via the particle c
 | --- | --- |
 | ![Low Res Jello](../assets/img/writeup/Low Res Jello.gif){:style="display:block; margin-right: auto; width:90%;"} | ![High Res Jello](../assets/img/writeup/High Res Jello.gif){:style="display:block; margin-right: auto; width:90%;"} |
 
+
 ## Lessons Learned
 
 We learned a lot in this project! Here are a few:
@@ -89,11 +90,11 @@ We also played around with the spring constant to manipulate the rigidity of the
 
 We also handled collisions between two Jello objects by using mesh colliders and spring collision.
 
-![collision](../assets/img/writeup/collision.gif){:style="display:block; margin-left: auto; margin-right: auto; width:90%;"}
+![collision](../assets/img/writeup/collision.gif){:style="display:block; margin-left: auto; margin-right: auto; width:50%;"}
 
 Lastly, we supported clicking and dragging our Jello object as an aspect of interactivity.
 
-![drag](../assets/img/writeup/drag.gif){:style="display:block; margin-left: auto; margin-right: auto; width:90%;"}
+![drag](../assets/img/writeup/drag.gif){:style="display:block; margin-left: auto; margin-right: auto; width:50%;"}
 
 ## References
 From a high level, other than referencing documentation on how certain built in tools for Unity worked, we used trial and error when building
