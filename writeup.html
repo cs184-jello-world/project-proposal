@@ -189,29 +189,8 @@ We concluded that the structure of our objects was maintained via the particle c
   <li>
 <strong>Choosing the sphere model’s spring configuration:</strong> During many early iterations of our design, we found that many spring configurations were underconstrained, resulting in erratic motion and deformation. As a result, we added an origin point with springs connecting to all outer vertices as well as other sets of springs that connect polar opposite vertices. Additionally, we found that lowering the spring constant to the 100-5000 range led to the best results.</li>
   <li>
-<strong>Resting Jello does not stabilize:</strong> Even when resting in place, our Jello would still continue to move. Introducing damping and friction on each vertex so the object would eventually come to rest.</li>
-  <li>
 <strong>Collision detection:</strong> When attempting to implement collisions, we found that the objects would only detect a collision when particles collided. However, since the mesh spans more locations than simply the particle positions, this would lead to objects being “inside” of one another before a collision was detected. To fix this, we modified the position of the Game Object in Unity to match the center of the mesh so that collisions were detected properly. Additionally, we enabled collisions between springs so that objects could no longer fall through one another.</li>
-  <li>
-<strong>Jagged edges in spherical Jello</strong>: The spherical object appeared jagged when the change in phi or theta was too large. Since the triangular mesh draws triangles between adjacent points in the mesh, it would appear non-spherical when these values were large. Decreasing the step size was the solution, and we didn’t sacrifice too much on computational efficiency since, unlike our cubic jello that was dense and filled with particles, we only had one origin particle inside of the sphere.</li>
 </ol>
-
-<table>
-  <thead>
-    <tr>
-      <th>Jello with Δɸ = π / 3, Δϴ = π / 6</th>
-      <th>Jello with Δɸ = π / 10, Δϴ = π / 20</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><img src="../assets/img/writeup/Low%20Res%20Jello.gif" alt="Low Res Jello" style="display:block; margin-right: auto; width:90%;"></td>
-      <td><img src="../assets/img/writeup/High%20Res%20Jello.gif" alt="High Res Jello" style="display:block; margin-right: auto; width:90%;"></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="lessons-learned">Lessons Learned</h2>
 
 <p>We learned a lot in this project! Here are a few:</p>
 
@@ -246,13 +225,22 @@ We concluded that the structure of our objects was maintained via the particle c
 
 <p><img src="../assets/img/writeup/spring-constants.gif" alt="spring-constants" style="display:block; margin-left: auto; margin-right: auto; width:90%;"></p>
 
-<p>We also handled collisions between two Jello objects by using mesh colliders and spring collision.</p>
+<p>We also handled collisions between two Jello objects by using mesh colliders and spring collision (left) and clicking/dragging our Jello object as an aspect of interactivity (right).</p>
 
-<p><img src="../assets/img/writeup/collision.gif" alt="collision" style="display:block; margin-left: auto; margin-right: auto; width:50%;"></p>
-
-<p>Lastly, we supported clicking and dragging our Jello object as an aspect of interactivity.</p>
-
-<p><img src="../assets/img/writeup/drag.gif" alt="drag" style="display:block; margin-left: auto; margin-right: auto; width:50%;"></p>
+<table style="margin-bottom: 10px;">
+  <thead>
+    <tr>
+      <th>Collisions</th>
+      <th>Clicking/dragging</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="../assets/img/writeup/collision.gif" alt="collision" style="display:block; margin-right: auto; width:90%;"></td>
+      <td><img src="../assets/img/writeup/drag.gif" alt="drag" style="display:block; margin-right: auto; width:90%;"></td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="references">References</h2>
 <p>From a high level, other than referencing documentation on how certain built in tools for Unity worked, we used trial and error when building</p>
