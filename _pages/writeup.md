@@ -7,7 +7,7 @@ mathjax: true
 
 # Final Writeup
 
-[Slides](https://docs.google.com/presentation/d/1ozbsNFH_Sg-njZ_wx_bAXcgFaxxcuOdkhU3FMj_iLkg/edit?usp=sharing)
+[Slides](https://docs.google.com/presentation/d/1ozbsNFH_Sg-njZ_wx_bAXcgFaxxcuOdkhU3FMj_iLkg/edit?usp=sharing) | [Video](https://www.youtube.com/watch?v=qnUuMLBezdM)
 
 Jello, world! In our final project, we implemented a realtime Jello simulation in Unity with support for keyboard and mouse interactivity that allows the user to manipulate the Jello. We created two mass-spring systems in the forms of a cube and a sphere and wrote mesh generators for both shapes. Initially, we started with the cube model by extending the 2D cloth model from Project 4 to our 3D lattice of masses and springs. Then, we devised our own algorithm for the sphere model using spherical coordinates and testing different spring configurations. Finally, we tuned spring parameters for realistic renderings. Since we used Unity for our project, we took advantage of the High Definition Rendering Pipeline, allowing us to focus on the construction of the object itself.
 
@@ -72,6 +72,10 @@ From a high level, other than referencing documentation on how certain built in 
 - ClothSim served as the basis for the way we went about building the mass-spring system, as well as the springs we attached to the cube object. 
 = To translate the springs from 2-D to 3-D for the cube object specifically, we referenced slides by [Carnegie Mellon University’s Fall 2002 offering of Computer Graphics 15-462](https://www.cs.cmu.edu/~barbic/jellocube_bw.pdf)
 - [Unity documentation on how the mesh class works](https://docs.unity3d.com/Manual/UsingtheMeshClass.html) so we know the appropriate information to supply when rendering the mesh.
+
+## Contributions
+Noah created the mass-spring cube and sphere models, implemented interactivity with keypresses, and figured out collisions. Johnny created the mesh renderer for the cube Jello, implemented interactivity with clicking/dragging, visualized the spring system with a wireframe, and looked into the frame deformation model. Allen worked on texturing the Jello using Unity's build in HDRP and helped construct the sphere mass-spring system and mesh. Jedi helped on creating teh Jello materials in Unity and worked on the sphere Jello mass-spring model, too. Everyone contributed equally to the milestone, renders, and final presentation.
+
 
 
 
