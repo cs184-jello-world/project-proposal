@@ -58,16 +58,8 @@ As this was all of our first times working with Unity, we ran into a number of c
 2. **Decreasing the vertex particle size deformed our system:** 
 We concluded that the structure of our objects was maintained via the particle collisions, and kept the particle sizes large enough but didn’t render the particles themselves. We’re still not completely sure whether the deformations were caused by precision errors when calculating the normals or the mass of the particle decreasing as the size of the particle also decreases, which would cause spring correction forces to apply an outsized impact on the particles.
 3. **Choosing the sphere model's spring configuration:** During many early iterations of our design, we found that many spring configurations were underconstrained, resulting in erratic motion and deformation. As a result, we added an origin point with springs connecting to all outer vertices as well as other sets of springs that connect polar opposite vertices. Additionally, we found that lowering the spring constant to the 100-5000 range led to the best results.
-4. **Resting Jello does not stabilize:** Even when resting in place, our Jello would still continue to move. Introducing damping and friction on each vertex so the object would eventually come to rest.
-5. **Collision detection:** When attempting to implement collisions, we found that the objects would only detect a collision when particles collided. However, since the mesh spans more locations than simply the particle positions, this would lead to objects being “inside” of one another before a collision was detected. To fix this, we modified the position of the Game Object in Unity to match the center of the mesh so that collisions were detected properly. Additionally, we enabled collisions between springs so that objects could no longer fall through one another.
-6. **Jagged edges in spherical Jello**: The spherical object appeared jagged when the change in phi or theta was too large. Since the triangular mesh draws triangles between adjacent points in the mesh, it would appear non-spherical when these values were large. Decreasing the step size was the solution, and we didn’t sacrifice too much on computational efficiency since, unlike our cubic jello that was dense and filled with particles, we only had one origin particle inside of the sphere.
+4. **Collision detection:** When attempting to implement collisions, we found that the objects would only detect a collision when particles collided. However, since the mesh spans more locations than simply the particle positions, this would lead to objects being “inside” of one another before a collision was detected. To fix this, we modified the position of the Game Object in Unity to match the center of the mesh so that collisions were detected properly. Additionally, we enabled collisions between springs so that objects could no longer fall through one another.
 
-| Jello with Δɸ = π / 3, Δϴ = π / 6 | Jello with Δɸ = π / 10, Δϴ = π / 20|
-| --- | --- |
-| ![Low Res Jello](../assets/img/writeup/Low Res Jello.gif){:style="display:block; margin-right: auto; width:90%;"} | ![High Res Jello](../assets/img/writeup/High Res Jello.gif){:style="display:block; margin-right: auto; width:90%;"} |
-
-
-## Lessons Learned
 
 We learned a lot in this project! Here are a few:
 
@@ -88,13 +80,12 @@ We also played around with the spring constant to manipulate the rigidity of the
 
 ![spring-constants](../assets/img/writeup/spring-constants.gif){:style="display:block; margin-left: auto; margin-right: auto; width:90%;"}
 
-We also handled collisions between two Jello objects by using mesh colliders and spring collision.
+We also handled collisions between two Jello objects by using mesh colliders and spring collision (left) and clicking/dragging our Jello object as an aspect of interactivity (right).
 
-![collision](../assets/img/writeup/collision.gif){:style="display:block; margin-left: auto; margin-right: auto; width:50%;"}
-
-Lastly, we supported clicking and dragging our Jello object as an aspect of interactivity.
-
-![drag](../assets/img/writeup/drag.gif){:style="display:block; margin-left: auto; margin-right: auto; width:50%;"}
+| Collisions | Clicking/dragging |
+| --- | --- |
+| ![collision](../assets/img/writeup/collision.gif){:style="display:block; margin-right: auto; width:90%;"} | ![drag](../assets/img/writeup/drag.gif){:style="display:block; margin-right: auto; width:90%;"} |
+{:style="margin-bottom: 10px;"}
 
 ## References
 From a high level, other than referencing documentation on how certain built in tools for Unity worked, we used trial and error when building
