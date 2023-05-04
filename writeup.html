@@ -175,21 +175,24 @@
 
 <p>The WASD keys allow the user to control the Jello in the \(x-z\) plane. Upon every update, we detect keyboard inputs. For instance, if the W key is pressed, we add velocity in the \(+z\) direction to the rigid body component of every unique particle in the object. We also supported spacebar inputs to make the Jello jump in the \(+y\) direction.</p>
 
-<p>To support clicking and dragging our Jello, we track the position of the mouse and send out a ray from the mouse onto the object until it intersects with one of the vertices. From the \(z\) coordinate of this intersection point, we can detect the current depth of the object. Thus, we can effectively treat any mouse movement in 2D screen space as only changing the x and y coordinates of the object along the intersected plane.</p>
+<p>To support clicking and dragging our jello, we tracked the position of the mouse and sent out a ray from the mouse screen coordinate to the world and tracked the collision point with the object. Since moving around the mouse could only change two spatial dimensions, we needed to limit the movement of the dragged object to a plane in 3-d space. The plane we chose was the plane normal to the camera viewing direction that included the initial intersection point. Any subsequent mouse movement would be raycasted to intersect that plane to determine the object’s new position.</p>
 
 <p><strong>Challenges</strong></p>
 
 <p>As this was all of our first times working with Unity, we ran into a number of challenges:</p>
+
 <ol>
   <li>
 <strong>Distributing particles in our spherical mass spring system:</strong> We found there was a tradeoff between computational efficiency with fewer particles and sufficiently constraining the system with springs so that the object remained stable. At first, we only added particles to the outer face of the sphere and distributed them evenly. However, to adequately constrain the system, we also added a particle in the origin that was connected to every other particle in the system (much like a bicycle wheel and its spokes). Another issue we originally faced with setting particle positions was that we had to special case \(\theta = 0\) and \(\theta = \pi\) because rotating these positions in \(\phi\) should result in the same vertex.</li>
   <li>
-<strong>Decreasing the vertex particle size deformed our system:</strong> 
+<strong>Decreasing the vertex particle size deformed our system:</strong>
 We concluded that the structure of our objects was maintained via the particle collisions, and kept the particle sizes large enough but didn’t render the particles themselves. We’re still not completely sure whether the deformations were caused by precision errors when calculating the normals or the mass of the particle decreasing as the size of the particle also decreases, which would cause spring correction forces to apply an outsized impact on the particles.</li>
   <li>
 <strong>Choosing the sphere model’s spring configuration:</strong> During many early iterations of our design, we found that many spring configurations were underconstrained, resulting in erratic motion and deformation. As a result, we added an origin point with springs connecting to all outer vertices as well as other sets of springs that connect polar opposite vertices. Additionally, we found that lowering the spring constant to the 100-5000 range led to the best results.</li>
   <li>
 <strong>Collision detection:</strong> When attempting to implement collisions, we found that the objects would only detect a collision when particles collided. However, since the mesh spans more locations than simply the particle positions, this would lead to objects being “inside” of one another before a collision was detected. To fix this, we modified the position of the Game Object in Unity to match the center of the mesh so that collisions were detected properly. Additionally, we enabled collisions between springs so that objects could no longer fall through one another.</li>
+  <li>
+<strong>Exploring other models:</strong> One of the limitations we found with our current mass-spring method was that designing the system for a particular mesh shape was a manual and difficult process. We wanted to try a softbody model that could represent any mesh shape, so instead of creating the mesh based on the outer vertices of the mass spring system, we just used the mesh vertices themselves in the physics simulation. To enable elasticity and deformation, we let the vertices be displaced from their original frame and then corrected them back with an oscillating force. However, this didn’t look realistic so we didn’t pursue it and to truly pursue a mesh-shape independent model we might’ve needed tetrahedral meshes.</li>
 </ol>
 
 <p>We learned a lot in this project! Here are a few:</p>
@@ -204,7 +207,7 @@ We concluded that the structure of our objects was maintained via the particle c
 
 <p>In the videos below, we capture the primary features of our Jello! You can see the cube and spherical Jellos we implemented, as well as applying movement and jumping commands to the objects.</p>
 
-<table style="margin-bottom: 10px;">
+<table>
   <thead>
     <tr>
       <th>Bowl (Cube)</th>
@@ -221,13 +224,13 @@ We concluded that the structure of our objects was maintained via the particle c
   </tbody>
 </table>
 
-<p>We also played around with the spring constant to manipulate the rigidity of the Jello. As you can see, lower spring constants make the Jello more jiggly, analogous to an extra bouncy bit of jello! Naturally, a higher spring constant meant that the system would settle quicker. Interestingly, the bounce height for the cube seemed to increase then decrease as the spring constant increased. This might be because lower spring constants could not apply enough force to lift the Jello while higher spring constants do not deform enough to spring the Jello upwards.</p>
+<p style="margin-bottom: 10px;">We also played around with the spring constant to manipulate the rigidity of the Jello. As you can see, lower spring constants make the Jello more jiggly, analogous to an extra bouncy bit of jello! Naturally, a higher spring constant meant that the system would settle quicker. Interestingly, the bounce height for the cube seemed to increase then decrease as the spring constant increased. This might be because lower spring constants could not apply enough force to lift the Jello while higher spring constants do not deform enough to spring the Jello upwards.</p>
 
 <p><img src="../assets/img/writeup/spring-constants.gif" alt="spring-constants" style="display:block; margin-left: auto; margin-right: auto; width:90%;"></p>
 
 <p>We also handled collisions between two Jello objects by using mesh colliders and spring collision (left) and clicking/dragging our Jello object as an aspect of interactivity (right).</p>
 
-<table style="margin-bottom: 10px;">
+<table>
   <thead>
     <tr>
       <th>Collisions</th>
@@ -242,10 +245,12 @@ We concluded that the structure of our objects was maintained via the particle c
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 style="margin-bottom: 10px;" id="references">References</h2>
+
 <p>From a high level, other than referencing documentation on how certain built in tools for Unity worked, we used trial and error when building</p>
+
 <ul>
-  <li>ClothSim served as the basis for the way we went about building the mass-spring system, as well as the springs we attached to the cube object. 
+  <li>ClothSim served as the basis for the way we went about building the mass-spring system, as well as the springs we attached to the cube object.
 = To translate the springs from 2-D to 3-D for the cube object specifically, we referenced slides by <a href="https://www.cs.cmu.edu/~barbic/jellocube_bw.pdf" rel="external nofollow noopener" target="_blank">Carnegie Mellon University’s Fall 2002 offering of Computer Graphics 15-462</a>
 </li>
   <li>
@@ -253,8 +258,8 @@ We concluded that the structure of our objects was maintained via the particle c
 </ul>
 
 <h2 id="contributions">Contributions</h2>
-<p>Noah created the mass-spring cube and sphere models, implemented interactivity with keypresses, and figured out collisions. Johnny created the mesh renderer for the cube Jello, implemented interactivity with clicking/dragging, visualized the spring system with a wireframe, and looked into the frame deformation model. Allen worked on texturing the Jello using Unity’s build in HDRP and helped construct the sphere mass-spring system and mesh. Jedi helped on creating teh Jello materials in Unity and worked on the sphere Jello mass-spring model, too. Everyone contributed equally to the milestone, renders, and final presentation.</p>
 
+<p>Noah created the mass-spring cube and sphere models, implemented interactivity with keypresses, and figured out collisions. Johnny created the mesh renderer for the cube Jello, implemented interactivity with clicking/dragging, visualized the spring system with a wireframe, and looked into the frame deformation model. Allen worked on texturing the Jello using Unity’s build in HDRP and helped construct the sphere mass-spring system and mesh. Jedi helped on creating the Jello materials in Unity and worked on the sphere Jello mass-spring model, too. Everyone contributed equally to the milestone, renders, and final presentation.</p>
 
 </div>
 
