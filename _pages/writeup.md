@@ -84,7 +84,7 @@ We also handled collisions between two Jello objects by using mesh colliders and
 
 | Collisions | Clicking/dragging |
 | --- | --- |
-| ![collision](../assets/img/writeup/collision.gif){:style="display:block; margin-right: auto; width:90%;"} | ![drag](../assets/img/writeup/drag.gif){:style="display:block; margin-right: auto; width:90%;"} |
+| ![collision](../assets/img/writeup/collision.gif){:style="display:block; margin-right: auto; width:50%;"} | ![drag](../assets/img/writeup/drag.gif){:style="display:block; margin-right: auto; width:50%;"} |
 {:style="margin-bottom: 10px;"}
 
 ## References
